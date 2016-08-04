@@ -1,15 +1,12 @@
 // Assigning modules to local variables
 var gulp = require('gulp');
 var less = require('gulp-less');
-var watch = require('gulp-watch');
 var browserSync = require('browser-sync').create();
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
-var server = require('gulp-server-livereload');
-
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -21,7 +18,7 @@ var banner = ['/*!\n',
 ].join('');
 
 // Default task
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy', 'watch']);
+gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
 
 // Less task to compile the less files and add the banner
 gulp.task('less', function() {
@@ -32,26 +29,6 @@ gulp.task('less', function() {
         .pipe(browserSync.reload({
             stream: true
         }))
-});
-
-gulp.task('watch', function () {
-  watch('./less/*.less', batch(function (events, done) {
-    gulp.start('default', done);
-  }));
-});
- 
-gulp.task('webserver', ['watch'], function () {
-  gulp.src('.')
-    .pipe(server({
-      livereload: {
-        enable: true,
-        filter: function (filename, cb) {
-          cb(!/\.(sa|le)ss$|node_modules/.test(filename));
-        }
-      },
-      directoryListing: true,
-      open: true
-    }));
 });
 
 // Minify CSS

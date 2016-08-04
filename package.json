@@ -1,7 +1,7 @@
 {
   "name": "IanCampeloPortfolio",
   "title": "Portfolio",
-  "version": "0.1",
+  "version": "1.1.1",
   "homepage": "http://iancampelo.com",
   "author": "Ian Campelo",
   "license": {
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-grayscale.git"
+    "url": "https://github.com/iancampelo/website.git"
   }
 }
